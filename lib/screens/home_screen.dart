@@ -8,6 +8,8 @@ import '../widgets/recipe_card.dart';
 import '../widgets/custom_bottom_nav.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -24,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      duration: Duration(milliseconds: 800),
+      duration: const Duration(milliseconds: 800),
       vsync: this,
     );
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -74,19 +76,19 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             slivers: [
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomHeader(),
-                      SizedBox(height: 30),
+                      const CustomHeader(),
+                      const SizedBox(height: 30),
                       SearchBarWidget(onChanged: _onSearchChanged),
-                      SizedBox(height: 30),
+                      const SizedBox(height: 30),
                       CategoryList(
                         selectedIndex: selectedCategoryIndex,
                         onCategorySelected: _onCategorySelected,
                       ),
-                      SizedBox(height: 30),
+                      const SizedBox(height: 30),
                       Text(
                         'Popular Recipes',
                         style: TextStyle(
@@ -95,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           color: Colors.grey[800],
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ),

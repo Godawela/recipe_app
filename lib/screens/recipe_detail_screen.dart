@@ -7,7 +7,7 @@ import '../widgets/custom_tab_bar.dart';
 class RecipeDetailScreen extends StatefulWidget {
   final Recipe recipe;
 
-  RecipeDetailScreen({required this.recipe});
+  const RecipeDetailScreen({super.key, required this.recipe});
 
   @override
   _RecipeDetailScreenState createState() => _RecipeDetailScreenState();
@@ -22,7 +22,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with TickerProv
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      duration: Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 600),
       vsync: this,
     );
     _slideAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -53,12 +53,12 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with TickerProv
             pinned: true,
             backgroundColor: Colors.orange[600],
             leading: IconButton(
-              icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+              icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
               onPressed: () => Navigator.pop(context),
             ),
             actions: [
               IconButton(
-                icon: Icon(Icons.bookmark_outline, color: Colors.white),
+                icon: const Icon(Icons.bookmark_outline, color: Colors.white),
                 onPressed: () {},
               ),
             ],
@@ -76,7 +76,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with TickerProv
                     tag: 'recipe-${widget.recipe.name}',
                     child: Text(
                       widget.recipe.image,
-                      style: TextStyle(fontSize: 120),
+                      style: const TextStyle(fontSize: 120),
                     ),
                   ),
                 ),
@@ -86,11 +86,11 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with TickerProv
           SliverToBoxAdapter(
             child: SlideTransition(
               position: Tween<Offset>(
-                begin: Offset(0.0, 1.0),
+                begin: const Offset(0.0, 1.0),
                 end: Offset.zero,
               ).animate(_slideAnimation),
               child: Container(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -102,24 +102,24 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with TickerProv
                         color: Colors.grey[800],
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Row(
                       children: [
                         InfoChip(icon: Icons.access_time, text: widget.recipe.time),
-                        SizedBox(width: 15),
+                        const SizedBox(width: 15),
                         InfoChip(icon: Icons.local_fire_department, text: '${widget.recipe.calories} cal'),
-                        SizedBox(width: 15),
+                        const SizedBox(width: 15),
                         InfoChip(icon: Icons.star, text: widget.recipe.rating.toString()),
                       ],
                     ),
-                    SizedBox(height: 30),
+                    const SizedBox(height: 30),
                     CustomTabBar(
                       showIngredients: showIngredients,
                       onTabChanged: _onTabChanged,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     AnimatedSwitcher(
-                      duration: Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 300),
                       child: showIngredients ? _buildIngredientsList() : _buildInstructionsList(),
                     ),
                   ],
@@ -130,7 +130,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with TickerProv
         ],
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: ElevatedButton(
           onPressed: () {
             HapticFeedback.mediumImpact();
@@ -144,12 +144,12 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with TickerProv
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.orange[600],
-            padding: EdgeInsets.symmetric(vertical: 16),
+            padding: const EdgeInsets.symmetric(vertical: 16),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),
           ),
-          child: Text(
+          child: const Text(
             'Start Cooking',
             style: TextStyle(
               fontSize: 18,
@@ -164,11 +164,11 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with TickerProv
 
   Widget _buildIngredientsList() {
     return Column(
-      key: ValueKey('ingredients'),
+      key: const ValueKey('ingredients'),
       children: widget.recipe.ingredients.map((ingredient) {
         return Container(
-          margin: EdgeInsets.only(bottom: 12),
-          padding: EdgeInsets.all(16),
+          margin: const EdgeInsets.only(bottom: 12),
+          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(12),
@@ -176,7 +176,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with TickerProv
               BoxShadow(
                 color: Colors.grey.withOpacity(0.1),
                 blurRadius: 5,
-                offset: Offset(0, 2),
+                offset: const Offset(0, 2),
               ),
             ],
           ),
@@ -190,7 +190,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with TickerProv
                   shape: BoxShape.circle,
                 ),
               ),
-              SizedBox(width: 16),
+              const SizedBox(width: 16),
               Expanded(
                 child: Text(
                   ingredient,
@@ -209,13 +209,13 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with TickerProv
 
   Widget _buildInstructionsList() {
     return Column(
-      key: ValueKey('instructions'),
+      key: const ValueKey('instructions'),
       children: widget.recipe.instructions.asMap().entries.map((entry) {
         int index = entry.key;
         String instruction = entry.value;
         return Container(
-          margin: EdgeInsets.only(bottom: 16),
-          padding: EdgeInsets.all(16),
+          margin: const EdgeInsets.only(bottom: 16),
+          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(12),
@@ -223,7 +223,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with TickerProv
               BoxShadow(
                 color: Colors.grey.withOpacity(0.1),
                 blurRadius: 5,
-                offset: Offset(0, 2),
+                offset: const Offset(0, 2),
               ),
             ],
           ),
@@ -240,7 +240,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with TickerProv
                 child: Center(
                   child: Text(
                     '${index + 1}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
@@ -248,7 +248,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with TickerProv
                   ),
                 ),
               ),
-              SizedBox(width: 16),
+              const SizedBox(width: 16),
               Expanded(
                 child: Text(
                   instruction,

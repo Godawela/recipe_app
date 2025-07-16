@@ -8,15 +8,15 @@ class RecipeCard extends StatelessWidget {
   final int index;
 
   const RecipeCard({
-    Key? key,
+    super.key,
     required this.recipe,
     required this.index,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+      margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
       child: GestureDetector(
         onTap: () {
           HapticFeedback.lightImpact();
@@ -28,7 +28,7 @@ class RecipeCard extends StatelessWidget {
               transitionsBuilder: (context, animation, secondaryAnimation, child) {
                 return SlideTransition(
                   position: Tween<Offset>(
-                    begin: Offset(1.0, 0.0),
+                    begin: const Offset(1.0, 0.0),
                     end: Offset.zero,
                   ).animate(animation),
                   child: child,
@@ -40,7 +40,7 @@ class RecipeCard extends StatelessWidget {
         child: Hero(
           tag: 'recipe-${recipe.name}',
           child: Container(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
@@ -48,7 +48,7 @@ class RecipeCard extends StatelessWidget {
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.1),
                   blurRadius: 10,
-                  offset: Offset(0, 5),
+                  offset: const Offset(0, 5),
                 ),
               ],
             ),
@@ -64,11 +64,11 @@ class RecipeCard extends StatelessWidget {
                   child: Center(
                     child: Text(
                       recipe.image,
-                      style: TextStyle(fontSize: 32),
+                      style: const TextStyle(fontSize: 32),
                     ),
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,25 +81,25 @@ class RecipeCard extends StatelessWidget {
                           color: Colors.grey[800],
                         ),
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Row(
                         children: [
                           Icon(Icons.access_time, size: 16, color: Colors.grey[500]),
-                          SizedBox(width: 4),
+                          const SizedBox(width: 4),
                           Text(recipe.time, style: TextStyle(color: Colors.grey[500])),
-                          SizedBox(width: 15),
+                          const SizedBox(width: 15),
                           Icon(Icons.local_fire_department, size: 16, color: Colors.orange[400]),
-                          SizedBox(width: 4),
+                          const SizedBox(width: 4),
                           Text('${recipe.calories} cal', style: TextStyle(color: Colors.grey[500])),
                         ],
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Row(
                         children: [
                           _buildDifficultyBadge(),
-                          Spacer(),
-                          Icon(Icons.star, color: Colors.amber, size: 16),
-                          SizedBox(width: 4),
+                          const Spacer(),
+                          const Icon(Icons.star, color: Colors.amber, size: 16),
+                          const SizedBox(width: 4),
                           Text(recipe.rating.toString(), style: TextStyle(color: Colors.grey[600])),
                         ],
                       ),
@@ -131,14 +131,14 @@ class RecipeCard extends StatelessWidget {
     }
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
         color: badgeColor,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
         recipe.difficulty,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 12,
           fontWeight: FontWeight.bold,

@@ -6,14 +6,14 @@ class CategoryList extends StatelessWidget {
   final Function(int) onCategorySelected;
 
   CategoryList({
-    Key? key,
+    super.key,
     required this.selectedIndex,
     required this.onCategorySelected,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 45,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -21,12 +21,12 @@ class CategoryList extends StatelessWidget {
         itemBuilder: (context, index) {
           final isSelected = index == selectedIndex;
           return Container(
-            margin: EdgeInsets.only(right: 15),
+            margin: const EdgeInsets.only(right: 15),
             child: GestureDetector(
               onTap: () => onCategorySelected(index),
               child: AnimatedContainer(
-                duration: Duration(milliseconds: 300),
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                duration: const Duration(milliseconds: 300),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 decoration: BoxDecoration(
                   color: isSelected ? Colors.orange[600] : Colors.white,
                   borderRadius: BorderRadius.circular(20),
@@ -34,7 +34,7 @@ class CategoryList extends StatelessWidget {
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.1),
                       blurRadius: 5,
-                      offset: Offset(0, 2),
+                      offset: const Offset(0, 2),
                     ),
                   ],
                 ),

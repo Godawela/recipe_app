@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CustomHeader extends StatelessWidget {
+  const CustomHeader({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -27,7 +29,7 @@ class CustomHeader extends StatelessWidget {
           ],
         ),
         Container(
-          padding: EdgeInsets.all(12),
+          padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
             color: Colors.orange[100],
             borderRadius: BorderRadius.circular(16),

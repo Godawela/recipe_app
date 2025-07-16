@@ -5,15 +5,15 @@ class CustomTabBar extends StatelessWidget {
   final Function(bool) onTabChanged;
 
   const CustomTabBar({
-    Key? key,
+    super.key,
     required this.showIngredients,
     required this.onTabChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(4),
+      padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
         color: Colors.grey[100],
         borderRadius: BorderRadius.circular(25),
@@ -24,8 +24,8 @@ class CustomTabBar extends StatelessWidget {
             child: GestureDetector(
               onTap: () => onTabChanged(true),
               child: AnimatedContainer(
-                duration: Duration(milliseconds: 300),
-                padding: EdgeInsets.symmetric(vertical: 12),
+                duration: const Duration(milliseconds: 300),
+                padding: const EdgeInsets.symmetric(vertical: 12),
                 decoration: BoxDecoration(
                   color: showIngredients ? Colors.white : Colors.transparent,
                   borderRadius: BorderRadius.circular(20),
@@ -34,7 +34,7 @@ class CustomTabBar extends StatelessWidget {
                           BoxShadow(
                             color: Colors.grey.withOpacity(0.2),
                             blurRadius: 5,
-                            offset: Offset(0, 2),
+                            offset: const Offset(0, 2),
                           ),
                         ]
                       : [],
@@ -54,8 +54,8 @@ class CustomTabBar extends StatelessWidget {
             child: GestureDetector(
               onTap: () => onTabChanged(false),
               child: AnimatedContainer(
-                duration: Duration(milliseconds: 300),
-                padding: EdgeInsets.symmetric(vertical: 12),
+                duration: const Duration(milliseconds: 300),
+                padding: const EdgeInsets.symmetric(vertical: 12),
                 decoration: BoxDecoration(
                   color: !showIngredients ? Colors.white : Colors.transparent,
                   borderRadius: BorderRadius.circular(20),
@@ -64,7 +64,7 @@ class CustomTabBar extends StatelessWidget {
                           BoxShadow(
                             color: Colors.grey.withOpacity(0.2),
                             blurRadius: 5,
-                            offset: Offset(0, 2),
+                            offset: const Offset(0, 2),
                           ),
                         ]
                       : [],

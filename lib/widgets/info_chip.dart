@@ -5,15 +5,15 @@ class InfoChip extends StatelessWidget {
   final String text;
 
   const InfoChip({
-    Key? key,
+    super.key,
     required this.icon,
     required this.text,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         color: Colors.grey[100],
         borderRadius: BorderRadius.circular(20),
@@ -22,7 +22,7 @@ class InfoChip extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(icon, size: 16, color: Colors.grey[600]),
-          SizedBox(width: 4),
+          const SizedBox(width: 4),
           Text(text, style: TextStyle(color: Colors.grey[600])),
         ],
       ),
