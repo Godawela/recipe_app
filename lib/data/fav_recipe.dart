@@ -1,0 +1,88 @@
+import '../models/recipe.dart';
+
+class FavRecipe {
+  static List<Recipe> getRecipes() {
+    return [
+      Recipe(
+        name: 'Beef Stir Fry',
+        image: '🥩',
+        time: '25 min',
+        difficulty: 'Medium',
+        calories: 380,
+        rating: 4.4,
+        ingredients: ['500g beef strips', 'Mixed vegetables', 'Soy sauce', 'Garlic', 'Ginger'],
+        instructions: ['Heat oil in wok', 'Stir fry beef', 'Add vegetables', 'Season and serve'],
+      ),
+      Recipe(
+        name: 'Chocolate Cookies',
+        image: '🍪',
+        time: '30 min',
+        difficulty: 'Easy',
+        calories: 210,
+        rating: 4.6,
+        ingredients: ['Flour', 'Butter', 'Sugar', 'Chocolate chips', 'Eggs'],
+        instructions: ['Mix dry ingredients', 'Cream butter and sugar', 'Add eggs', 'Bake for 12 minutes'],
+      ),
+      Recipe(
+        name: 'Fish Tacos',
+        image: '🌮',
+        time: '20 min',
+        difficulty: 'Medium',
+        calories: 340,
+        rating: 4.5,
+        ingredients: ['White fish', 'Tortillas', 'Cabbage', 'Lime', 'Chipotle sauce'],
+        instructions: ['Season and grill fish', 'Warm tortillas', 'Assemble tacos', 'Serve with lime'],
+      ),
+      Recipe(
+        name: 'Smoothie Bowl',
+        image: '🥤',
+        time: '5 min',
+        difficulty: 'Easy',
+        calories: 250,
+        rating: 4.2,
+        ingredients: ['Frozen berries', 'Banana', 'Yogurt', 'Granola', 'Honey'],
+        instructions: ['Blend frozen fruits', 'Pour into bowl', 'Add toppings', 'Serve immediately'],
+      ),
+      Recipe(
+        name: 'Mushroom Risotto',
+        image: '🍄',
+        time: '35 min',
+        difficulty: 'Hard',
+        calories: 420,
+        rating: 4.7,
+        ingredients: ['Arborio rice', 'Mushrooms', 'Vegetable stock', 'Parmesan', 'White wine'],
+        instructions: ['Sauté mushrooms', 'Toast rice', 'Add stock gradually', 'Finish with cheese'],
+      ),
+      Recipe(
+        name: 'Caesar Salad',
+        image: '🥬',
+        time: '15 min',
+        difficulty: 'Easy',
+        calories: 310,
+        rating: 4.4,
+        ingredients: ['Romaine lettuce', 'Croutons', 'Parmesan', 'Caesar dressing', 'Anchovies'],
+        instructions: ['Wash and chop lettuce', 'Make dressing', 'Toss with croutons', 'Top with cheese'],
+      ),
+      Recipe(
+        name: 'Pancakes',
+        image: '🥞',
+        time: '15 min',
+        difficulty: 'Easy',
+        calories: 280,
+        rating: 4.8,
+        ingredients: ['Flour', 'Milk', 'Eggs', 'Baking powder', 'Maple syrup'],
+        instructions: ['Mix batter', 'Heat pan', 'Pour and cook', 'Serve with syrup'],
+      ),
+      Recipe(
+        name: 'Beef Burger',
+        image: '🍔',
+        time: '20 min',
+        difficulty: 'Medium',
+        calories: 520,
+        rating: 4.6,
+        ingredients: ['Ground beef', 'Burger buns', 'Lettuce', 'Tomato', 'Cheese'],
+        instructions: ['Form patties', 'Grill burgers', 'Toast buns', 'Assemble and serve'],
+      ),
+    ];
+  }
+}
