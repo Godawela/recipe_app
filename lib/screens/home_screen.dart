@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/data/fav_recipe.dart';
+import 'package:recipe_app/screens/cooking_timer_screen.dart';
+import 'package:recipe_app/screens/favourite_screen.dart';
+import 'package:recipe_app/screens/profile_screen.dart';
+import 'package:recipe_app/screens/shopping_list_screen.dart';
 import '../models/recipe.dart';
 import '../data/recipe_data.dart';
 import '../widgets/custom_header.dart';
@@ -32,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
     );
-    
+
     recipes = RecipeData.getRecipes();
     filteredRecipes = recipes;
     _animationController.forward();
@@ -47,7 +52,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   void _onSearchChanged(String query) {
     setState(() {
       filteredRecipes = recipes
-          .where((recipe) => recipe.name.toLowerCase().contains(query.toLowerCase()))
+          .where((recipe) =>
+              recipe.name.toLowerCase().contains(query.toLowerCase()))
           .toList();
     });
   }
@@ -64,6 +70,45 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     setState(() {
       currentNavIndex = index;
     });
+
+    // Navigate to different screens based on the selected tab
+    switch (index) {
+      case 0:
+        // Already on Home, do nothing
+        break;
+      case 1:
+        // Navigate to Favorites
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => FavoritesScreen(
+              favoriteRecipes: FavRecipe.getRecipes(),
+            ),
+          ),
+        );
+        break;
+      case 2:
+        // Navigate to Shopping
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const ShoppingListScreen()),
+        );
+        break;
+      case 3:
+        // Navigate to Timer
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const CookingTimerScreen()),
+        );
+        break;
+      case 4:
+        // Navigate to Profile
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const ProfileScreen()),
+        );
+        break;
+    }
   }
 
   @override
@@ -128,4 +173,3 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
   }
 }
-
