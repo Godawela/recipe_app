@@ -5,57 +5,41 @@ class CustomBottomNav extends StatelessWidget {
   final Function(int) onTap;
 
   const CustomBottomNav({
-    Key? key,
+    super.key,
     required this.currentIndex,
     required this.onTap,
-  }) : super(key: key);
+  });
 
-  @override
+ @override
   Widget build(BuildContext context) {
-    final items = [
-      Icons.home,
-      Icons.search,
-      Icons.bookmark_outline,
-      Icons.person_outline,
-    ];
-
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 12),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
-            blurRadius: 10,
-            offset: Offset(0, -5),
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: items.asMap().entries.map((entry) {
-          int index = entry.key;
-          IconData icon = entry.value;
-          bool isActive = index == currentIndex;
-          
-          return GestureDetector(
-            onTap: () => onTap(index),
-            child: Container(
-              padding: EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: isActive ? Colors.orange[600] : Colors.transparent,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Icon(
-                icon,
-                color: isActive ? Colors.white : Colors.grey[400],
-                size: 24,
-              ),
-            ),
-          );
-        }).toList(),
-      ),
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      currentIndex: currentIndex,
+      onTap: onTap,
+      selectedItemColor: Colors.orange[600],
+      unselectedItemColor: Colors.grey[600],
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.favorite),
+          label: 'Favorites',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.shopping_cart),
+          label: 'Shopping',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.timer),
+          label: 'Timer',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: 'Profile',
+        ),
+      ],
     );
   }
 }
-
