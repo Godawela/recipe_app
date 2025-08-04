@@ -80,27 +80,77 @@ class RecipeCard extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: Colors.grey[800],
                         ),
+                        overflow: TextOverflow.ellipsis, // Add ellipsis for long names
+                        maxLines: 2, // Allow up to 2 lines for recipe names
                       ),
                       const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          Icon(Icons.access_time, size: 16, color: Colors.grey[500]),
-                          const SizedBox(width: 4),
-                          Text(recipe.time, style: TextStyle(color: Colors.grey[500])),
-                          const SizedBox(width: 15),
-                          Icon(Icons.local_fire_department, size: 16, color: Colors.orange[400]),
-                          const SizedBox(width: 4),
-                          Text('${recipe.calories} cal', style: TextStyle(color: Colors.grey[500])),
-                        ],
+                      // Improved: Use intrinsic dimensions and better overflow handling
+                      IntrinsicHeight(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Expanded(
+                              flex: 3,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(Icons.access_time, size: 16, color: Colors.grey[500]),
+                                  const SizedBox(width: 4),
+                                  Expanded(
+                                    child: Text(
+                                      recipe.time,
+                                      style: TextStyle(color: Colors.grey[500], fontSize: 12),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              flex: 3,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(Icons.local_fire_department, size: 16, color: Colors.orange[400]),
+                                  const SizedBox(width: 4),
+                                  Expanded(
+                                    child: Text(
+                                      '${recipe.calories} cal',
+                                      style: TextStyle(color: Colors.grey[500], fontSize: 12),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       const SizedBox(height: 8),
+                      // Improved: Better layout for difficulty and rating
                       Row(
                         children: [
-                          _buildDifficultyBadge(),
-                          const Spacer(),
-                          const Icon(Icons.star, color: Colors.amber, size: 16),
-                          const SizedBox(width: 4),
-                          Text(recipe.rating.toString(), style: TextStyle(color: Colors.grey[600])),
+                          Expanded(
+                            flex: 2,
+                            child: _buildDifficultyBadge(),
+                          ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            flex: 1,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Icon(Icons.star, color: Colors.amber, size: 16),
+                                const SizedBox(width: 4),
+                                Text(
+                                  recipe.rating.toString(),
+                                  style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ],
@@ -131,20 +181,20 @@ class RecipeCard extends StatelessWidget {
     }
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
       decoration: BoxDecoration(
         color: badgeColor,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(6),
       ),
       child: Text(
         recipe.difficulty,
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 12,
+          fontSize: 10,
           fontWeight: FontWeight.bold,
         ),
+        overflow: TextOverflow.ellipsis,
       ),
     );
   }
 }
-
